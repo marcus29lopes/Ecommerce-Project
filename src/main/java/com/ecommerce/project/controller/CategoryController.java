@@ -4,6 +4,7 @@ import com.ecommerce.project.config.AppConstants;
 import com.ecommerce.project.model.Category;
 import com.ecommerce.project.payload.CategoryDTO;
 import com.ecommerce.project.payload.CategoryResponse;
+import com.ecommerce.project.payload.ProductDTO;
 import com.ecommerce.project.service.CategoryService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +53,4 @@ public class CategoryController {
         return new ResponseEntity<>(savedCategoryDTO, HttpStatus.OK);
 
     }
-
 }
