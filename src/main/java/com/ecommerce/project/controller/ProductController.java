@@ -5,6 +5,7 @@ import com.ecommerce.project.payload.ProductDTO;
 import com.ecommerce.project.payload.ProductResponse;
 import com.ecommerce.project.repositories.CategoryRepository;
 import com.ecommerce.project.service.ProductService;
+import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -28,7 +29,7 @@ public class ProductController {
 
 
     @PostMapping("/admin/categories/{categoryId}/product")
-    public ResponseEntity<ProductDTO> addProduct(@RequestBody ProductDTO productDT0,
+    public ResponseEntity<ProductDTO> addProduct(@Valid @RequestBody ProductDTO productDT0,
                                                  @PathVariable Long categoryId) {
 
         ProductDTO productDTOSaved = productService.addProduct(categoryId, productDT0);
@@ -69,7 +70,7 @@ public class ProductController {
     }
 
     @PutMapping("/product/{productId}/image")
-    public ResponseEntity<ProductDTO> updateProductImage(@PathVariable Long productId,
+    public ResponseEntity<ProductDTO> updateProductImage(@Valid @PathVariable Long productId,
                                                          @RequestParam("image") MultipartFile image) throws IOException {
         ProductDTO updatedProduct = productService.updateProductImage(productId, image);
         return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
